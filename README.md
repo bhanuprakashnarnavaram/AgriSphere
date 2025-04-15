@@ -51,8 +51,12 @@ pip install -r requirements.txt
 npm install
 
 # Author
-Project Title: AgriSphere
-Developer: Bhanu Prakash N, Vishnu Karthik S, Bharath S R, Venkat Karthik
-Team: CALYPSO
-Modules: Agri Market | Crop Growth Prediction | Agri News | Disease Detection
+### Project Title: 
+AgriSphere
+### Developer: 
+Bhanu Prakash N, Vishnu Karthik S, Bharath S R, Venkat Karthik
+### Team: 
+CALYPSO
+### Modules: 
+Agri Market | Crop Growth Prediction | Agri News | Disease Detection
 
