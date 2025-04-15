@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri Knowledge Hub Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Agri Knowledge Hub</h1>
+        <input type="text" id="searchQuery" placeholder="Search for tutorials...">
+        <button onclick="searchAgriKnowledge()">Search</button>
+
+        <div class="results-wrapper">
+            <div class="results-box" id="youtubeBox">
+                <h2>YouTube Tutorials</h2>
+                <div id="youtubeResults"></div>
+            </div>
+
+            <div class="results-box" id="googleBox">
+                <h2>Google Search Results</h2>
+                <div id="googleResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <script async src="https://cse.google.com/cse.js?cx=53b380da48af8407f"></script>
+
+    <script>
+        const YOUTUBE_API_KEY = "AIzaSyAUXN5HcRE8Lgt75TpcfOsMRrF4BSL7d-g";
+        const GOOGLE_CSE_ID = "53b380da48af8407f"; 
+        const GOOGLE_API_KEY = "AIzaSyAUXN5HcRE8Lgt75TpcfOsMRrF4BSL7d-g"; 
+
+        function searchAgriKnowledge() {
+            let query = document.getElementById("searchQuery").value;
+            if (!query) {
+                alert("Please enter a search query.");
+                return;
+            }
+
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&maxResults=5&key=${YOUTUBE_API_KEY}`)
+                .then(response => response.json())
+                .then(data => {
+                    let videosHtml = "";
+                    data.items.forEach(item => {
+                        videosHtml += `
+                            <div class='video'>
+                                <iframe width="100%" height="200" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+                                <p>${item.snippet.title}</p>
+                            </div>`;
+                    });
+                    document.getElementById("youtubeResults").innerHTML = videosHtml;
+                })
+                .catch(error => console.error("Error fetching YouTube data:", error));
+
+            fetch(`https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&cx=${GOOGLE_CSE_ID}&key=${GOOGLE_API_KEY}`)
+                .then(response => response.json())
+                .then(data => {
+                    let googleHtml = "";
+                    data.items.forEach(item => {
+                        googleHtml += `
+                            <div class='google-result'>
+                                <a href="${item.link}" target="_blank"><h3>${item.title}</h3></a>
+                                <p>${item.snippet}</p>
+                            </div>`;
+                    });
+                    document.getElementById("googleResults").innerHTML = googleHtml;
+                })
+                .catch(error => console.error("Error fetching Google Search data:", error));
+        }
+    </script>
+
+    <style>
+        /* Dark Background with Blurry Effect */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: url('C:/Bhanu/AgriSphere/AgriSphere/img1.jpg') no-repeat center center/cover;
+            backdrop-filter: blur(10px);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(20, 20, 20, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+        }
+
+        input, button {
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .results-wrapper {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .results-box {
+            width: 48%;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            min-height: 300px;
+            text-align: left;
+        }
+
+        iframe {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .google-result a {
+            color: #66ccff;
+            text-decoration: none;
+        }
+
+        .google-result a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</body>
+</html>
