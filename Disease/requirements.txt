@@ -6,3 +6,6 @@ pillow
 cd disease
 python -m venv venv
 .\venv\Scripts\activate
+
+NOTE:
+In path Disease/model.....add this file https://drive.google.com/file/d/1YdYed8fKETcpSGFzDANVTsdZUZDjcS2d/view?usp=sharing
