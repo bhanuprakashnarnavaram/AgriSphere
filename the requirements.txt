@@ -1,0 +1,26 @@
+Separate Pages for:
+🌾 Crop Growth Predictor
+🛒 Agri Marketplace
+🌿 Crop Disease Identifier
+⛅ Weather-Based Farming Assistant (OpenWeather API)
+📰 Agri-News Dashboard (NewsAPI)
+🌱 Home Hydroponics & Balcony Plant Growth (YouTube Embed)
+npm install express mysql2 multer cors
+
+server run :
+
+cd agrimarket
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+node server.js
+
+cd crop_growth_prediction
+python app.py
+
+cd news
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+node app.js
+
+cd disease
+python -m venv venv
+.\venv\Scripts\activate
+python app.py

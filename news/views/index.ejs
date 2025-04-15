@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agri News Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: url('/images/img1.jpg') no-repeat center center / cover;
+      -webkit-backdrop-filter: blur(10px);
+      color: white;
+      text-align: center;
+    }
+    header {
+      background: rgba(20, 20, 20, 0.6);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+      backdrop-filter: blur(15px);
+    }
+    h1 { font-size: 2.5rem; font-weight: bold; margin: 0; }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+    .news-card {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(15px);
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .news-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+    .news-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .news-card h3 { font-size: 1.3rem; margin: 0.5rem 0; color: #ffffff; }
+    .news-card p { font-size: 0.95rem; margin-bottom: 0.7rem; color: #ddd; }
+    .news-card em { font-style: normal; color: #cccccc; font-size: 0.9rem; }
+    .news-card a {
+      margin-top: auto;
+      text-decoration: none;
+      color: #66ccff;
+      font-weight: bold;
+      transition: color 0.2s ease;
+    }
+    .news-card a:hover { color: #b2ffb2; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Agri News Dashboard</h1>
+  </header>
+
+  <form method="POST" style="margin-bottom: 2rem;">
+    <input type="text" name="search_query" placeholder="Search agricultural news..." value="<%= query %>"
+           style="padding: 10px 15px; width: 300px; border-radius: 8px; border: none; font-size: 1rem;">
+    
+    <select name="language" style="padding: 10px; border-radius: 8px; border: none; font-size: 1rem;">
+      <% for (const lang in languages) { %>
+        <option value="<%= lang %>" <%= lang === current_language ? 'selected' : '' %>><%= languages[lang] %></option>
+      <% } %>
+    </select>
+
+    <button type="submit" style="padding: 10px 20px; margin-left: 10px; background-color: #66ccff; color: black; font-weight: bold; border: none; border-radius: 8px; cursor: pointer;">
+      Search
+    </button>
+  </form>
+
+  <section class="news-grid">
+    <% news_articles.forEach(article => { %>
+      <div class="news-card">
+        <% if (article.image) { %>
+          <img src="<%= article.image %>" alt="News Image" class="news-image" />
+        <% } %>
+        <h3><%= article.title %></h3>
+        <p><em><%= article.source %></em></p>
+        <p><%= article.description %></p>
+        <a href="<%= article.url %>" target="_blank">Read more →</a>
+      </div>
+    <% }) %>
+  </section>
+
+</body>
+</html>

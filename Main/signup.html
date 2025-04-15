@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSphere - Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKeEcYGg54ufmxKGtJSj5dJWhxzDD-s7s",
+            authDomain: "agrisphere-2925d.firebaseapp.com",
+            projectId: "agrisphere-2925d",
+            storageBucket: "agrisphere-2925d.appspot.com",
+            messagingSenderId: "1027644535391",
+            appId: "1:1027644535391:web:208e185376b205fc19a1ea",
+            measurementId: "G-LX07KLSRTP"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        auth.useDeviceLanguage();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("signup-button").addEventListener("click", () => {
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then(userCredential => {
+                        alert("Registration successful! Redirecting to login page...");
+                        setTimeout(() => {
+                            window.location.href = "login.html";
+                        }, 500);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert(error.message);
+                    });
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('C:/Bhanu/AgriSphere/AgriSphere/img1.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .signup-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 320px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .signup-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+        }
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        #signup-button {
+            background: #007BFF;
+            color: white;
+        }
+        #signup-button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+        p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: white;
+        }
+        a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up for AgriSphere</h2>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <button id="signup-button">Sign Up</button>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+</body>
+</html>

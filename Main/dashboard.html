@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSphere - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKeEcYGg54ufmxKGtJSj5dJWhxzDD-s7s",
+            authDomain: "agrisphere-2925d.firebaseapp.com",
+            projectId: "agrisphere-2925d",
+            storageBucket: "agrisphere-2925d.appspot.com",
+            messagingSenderId: "1027644535391",
+            appId: "1:1027644535391:web:208e185376b205fc19a1ea",
+            measurementId: "G-LX07KLSRTP"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    document.getElementById("profile-name").textContent = user.email;
+                    document.getElementById("profile-name").style.color = "white";
+                } else {
+                    window.location.href = "login.html";
+                }
+            });
+
+            document.getElementById("logout-btn").addEventListener("click", async () => {
+                try {
+                    await signOut(auth);
+                    window.location.href = "login.html";
+                } catch (error) {
+                    console.error("Logout Error:", error);
+                    alert("Error logging out. Please try again.");
+                }
+            });
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: url('C:/Bhanu/AgriSphere/AgriSphere/img1.jpg') no-repeat center center/cover;
+        }
+
+        .menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            color: white; /* Updated to white */
+        }
+
+        .menu:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .dropdown.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #profile-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #profile-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        #logout-btn {
+            background: rgba(255, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #logout-btn:hover {
+            background: rgba(255, 0, 0, 1);
+        }
+
+        .boxes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 80%;
+            max-width: 1000px;
+            margin-top: 20px;
+        }
+
+        .box-container-wrapper {
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .box-container-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            color: white; /* Updated to white */
+        }
+        #topbar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#profile-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 10px 15px;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#profile-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+#profile-name {
+    font-weight: 600;
+}
+
+#logout-btn {
+    background: rgba(255, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#logout-btn:hover {
+    background: rgba(255, 0, 0, 1);
+}
+    </style>
+</head>
+<body>
+    <div id="topbar">
+        <div id="profile-bar">
+            <img id="profile-img" src="C:/Bhanu/AgriSphere/AgriSphere/user.png" alt="Profile">
+            <span id="profile-name">Loading...</span>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 style="color: white; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);">Welcome to AgriSphere Dashboard</h2>
+    </div>
+
+    <div class="boxes-container">
+        <div class="box-container-wrapper" id="crop-growth" style="cursor: pointer;" onclick="window.location.href='http://127.0.0.1:5000';">
+            <div class="box"><h3>Crop Growth Prediction</h3></div>
+        </div>
+        <div class="box-container-wrapper" id="agri-marketplace" onclick="location.href='../Agrimarket/market.html'">
+            <div class="box"><h3>Agri Marketplace</h3></div>
+        </div>
+        <div class="box-container-wrapper" id="crop-disease" onclick="location.href='../AgriHub/hub.html'">
+            <div class="box"><h3>Agri Hub</h3></div>
+        </div>
+        <div class="box-container-wrapper" id="agri-news" style="cursor: pointer;" onclick="window.location.href='http://localhost:3000';">
+            <div class="box">
+              <h3>Agri-News Dashboard</h3>
+            </div>
+          </div>          
+        <div class="box-container-wrapper" id="crop-disease" style="cursor: pointer;" onclick="window.location.href='http://127.0.0.1:5001';">
+            <div class="box"><h3>Crop Disease Identifier</h3></div>
+        </div>
+    </div>
+</body>
+</html>
