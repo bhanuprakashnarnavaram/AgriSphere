@@ -44,13 +44,13 @@ You can use AgriSphere/login.html as the main entry point to navigate between:
 ### Requirements
 
 Install these dependencies in each module:
-# Python (Crop Prediction)
+#### Python (Crop Prediction)
 pip install -r requirements.txt
 
-# Node.js (Marketplace & News)
+#### Node.js (Marketplace & News)
 npm install
 
-### Author
+# Author
 Project Title: AgriSphere
 Developer: Bhanu Prakash N, Vishnu Karthik S, Bharath S R, Venkat Karthik
 Team: CALYPSO
