@@ -60,3 +60,25 @@ CALYPSO
 ### Modules: 
 Agri Market | Crop Growth Prediction | Agri News | Disease Detection
 
+## Here are the Output images:
+
+![Signup Page](https://github.com/user-attachments/assets/9517f21c-a8ea-4c1c-b15b-8f8ad30c7d64)
+![Signup success](https://github.com/user-attachments/assets/f588fc8a-d8e9-42d2-b637-d18b1278aa42)
+
+![Login Page](https://github.com/user-attachments/assets/46476b2a-6636-4cf3-a639-d56008852381)
+![Login Success](https://github.com/user-attachments/assets/9dd1f5cc-c7be-416d-b59d-507693ca0850)
+
+![Dashboard](https://github.com/user-attachments/assets/cf5d3b34-08b6-4608-99b6-81a2f900e0d9)
+
+![Crop Growth input data](https://github.com/user-attachments/assets/31c0f2ae-fe20-460f-ac3b-a487138c1441)
+![Crop Growth Results](https://github.com/user-attachments/assets/58db32e7-0fae-4a23-97ab-b03d8fbbcba7)
+
+![Agri market dashboard](https://github.com/user-attachments/assets/07d1bbb4-5f5f-4c1f-8b94-79734c01956e)
+![Agri market add products](https://github.com/user-attachments/assets/54289389-66de-4c79-837c-e4b9fbb42f36)
+![Agri market products](https://github.com/user-attachments/assets/86944f34-01c8-4e8a-a4cd-867d8b2eabab)
+
+![Agri News](https://github.com/user-attachments/assets/4742b259-f00a-47fa-8073-8cb2a5ffdfa3)
+
+![Agri Hub](https://github.com/user-attachments/assets/b283c675-6e13-4ea7-9c47-7e19db59d2b0)
+
+![Crop Disease Identifier](https://github.com/user-attachments/assets/826be877-9e28-4ebf-8022-c2b8ac371141)
