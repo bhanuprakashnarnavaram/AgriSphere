@@ -1,0 +1,169 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #075dc0;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+button {
+    background-color: #075dc0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #075dc0;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #075dc0;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Image Preview */
+.image-preview {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.image-preview img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+    }
+
+    td:before {
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-label);
+        font-weight: bold;
+    }
+    .small-img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        display: block;
+        margin: auto;
+    }
+}
