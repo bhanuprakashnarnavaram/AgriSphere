@@ -58,7 +58,7 @@ Bhanu Prakash N, Vishnu Karthik S, Bharath S R, Venkat Karthik
 ### Team: 
 CALYPSO
 ### Modules: 
-Agri Market | Crop Growth Prediction | Agri News | Disease Detection
+Crop Growth Prediction | Agri Market | Agri Hub | Agri News | Disease Detection
 
 # Here are the Output images:
 ## Sign-Up
